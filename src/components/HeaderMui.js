@@ -27,11 +27,13 @@ headerText: {
   position: "absolute",
   marginTop: 0,
   marginBottom: "auto",
+  paddingRight: theme.spacing(10),
   marginLeft: 0,
-  marginRight: 0,
+  marginRight: 20,
   zIndex: 999,
-  top: "80%",
+  top: "60%",
   width: "100%",
+
 
 
   
@@ -41,14 +43,15 @@ textWrapper: {
   
     display: "block",
     paddingRight: 15,
-    paddingLeft: 15,
+    paddingLeft: theme.spacing(10),
     paddingBottom: 20,
     alignItems: "center",
     width: "fit-content",
     position: "absolute",
     zIndex: 999,
-    top: "65%",
-    width: "100%"
+    top: "50%",
+    width: "100%",
+
 
 
     

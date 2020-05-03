@@ -7,17 +7,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import theme from '../theme.js'
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    padding: theme.spacing(3),
+    height: '40vw',
+    marginLeft: theme.spacing(5)
+
   },
   media: {
     height: 200,
   },
+  description: {
+
+  },
 });
 
-export default function MediaCard() {
+export default function Coursecard({title, image, description}) {
   const classes = useStyles();
 
   return (
@@ -26,15 +34,16 @@ export default function MediaCard() {
         <CardMedia
           className={classes.media}
           component="img"
-          image="./img/potions.jpg"
-          title="Potions"
+          image={image}
+          title={title}
+          
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Potion-Making - Beginner's Course
+          <Typography className={classes.title}  gutterBottom variant="h5" component="h2">
+            {title ? title: "Unknown"}
             </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          This highly-rated online course will guide you step-by-step through the composition of your first potion and other related aspects of potion-making.
+          <Typography className={classes.description} variant="body2" color="textSecondary" component="p">
+           {description ? description: "Unknown"}
           </Typography>
         </CardContent>
       </CardActionArea>
