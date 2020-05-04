@@ -1,35 +1,47 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FolderIcon from '@material-ui/icons/Folder';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 
-const useStyles = makeStyles({
-  root: {
-    color: "black"
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" style={{ fontSize: 12}}>
+      {'Copyright © '}
+      <Link color="inherit" href="localhost:3000">
+        Hogwarts Online
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles((theme) => ({
+
+  footer: {
+    padding: theme.spacing(3, 9),
+    marginTop: theme.spacing(3),
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
-});
+}));
 
-export default function LabelBottomNavigation() {
+export default function StickyFooter() {
   const classes = useStyles();
-  const [value, setValue] = React.useState('recents');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-    	<ul>
-    	<li>Hogwarts Online Magical Lane 4 12478 London United Kingdom </li>
-      <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-      <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
-      </ul>
-    </BottomNavigation>
+
+      <footer className={classes.footer}>
+        
+          <Typography variant="body1" align="left" style={{ fontSize: 13, fontWeight: "bold"}}>Hogwarts Online</Typography>
+          <Typography variant="body1" style={{ fontSize: 12}}>Magical Lane 4</Typography>
+          <Typography variant="body1" style={{ fontSize: 12}}>12478 London</Typography>
+          <Typography variant="body1" style={{ fontSize: 12}}>United Kingdom</Typography>
+          <Copyright />
+        
+      </footer>
+ 
   );
 }

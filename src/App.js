@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import {Container} from 'react-bootstrap';
 import styled from 'styled-components';
-import { Grid, useMediaQuery, Hidden, Box } from "@material-ui/core";
+import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
 
 import AppbarMui from './components/AppbarMui'
 import HeaderMui from './components/HeaderMui'
 import Coursecard from './components/Coursecard'
 import Footer from './components/Footer'
+import theme from './theme.js'
+import {Link } from 'react-router-dom';
 
 const url = process.env.PUBLIC_URL  + "/img/bg1.jpg";
 
@@ -48,6 +49,7 @@ const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up("md"));
                 ))}
             </Grid>
         </Box>
+        <Button  variant="contained" color="primary" to='/courses' component={Link} style={{ marginTop: "auto",  marginBottom: "auto", marginLeft: theme.spacing(9)}}> All Courses >></Button>
         <Footer />
         </Grid>
       </Grid>
