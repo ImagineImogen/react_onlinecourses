@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box';
+import WelcomingText from './WelcomingText'
 
 const url = process.env.PUBLIC_URL  + "/img/castle.jpg";
 const useStyles = makeStyles((theme => ({
@@ -20,25 +21,7 @@ header: {
 
 },
 
-headerText: {
-  fontSize: 17,
-  display: 'inline-block',
-  alignItems: "center",
-  position: "absolute",
-  marginTop: 0,
-  marginBottom: "auto",
-  paddingRight: theme.spacing(10),
-  marginLeft: 0,
-  marginRight: 20,
-  zIndex: 999,
-  top: "60%",
-  width: "100%",
 
-
-
-  
-
-},
 textWrapper: {
   
     display: "block",
@@ -67,12 +50,25 @@ textWrapper: {
 function HeaderMui() {
   const classes = useStyles();
 
-  return (
+  const [showLoading, setShowLoading] = useState(false)
+
+  useEffect(
+        () => {
+          let timer1 = setTimeout(() => setShowLoading(true), 1000)
+
+   return () => {
+            clearTimeout(timer1)
+          }
+        },
+        [] //useEffect will run only one time
+           //if you pass a value to array, like this [data] than clearTimeout will run every time this value changes (useEffect re-run)
+    )
+  return  (
     <Box className={classes.header} flexWrap="wrap">
     <Box className={classes.textWrapper} width="100%" flexWrap="wrap">
-    <h2 >Hogwarts Online</h2>
-    <Box component="span" className={classes.headerText} flexWrap="wrap" whiteSpace="wrap">Hogwarts Online is the first platform out there for the wizards far away from Hogwarts. Experience the power of British magical education while still working muggle job. All you need is a magic wand and to be a proved wizard!</Box>
-      </Box>
+     <h2 >Hogwarts Online</h2>
+    <WelcomingText />
+    </Box>
     </Box>
   );
 }
