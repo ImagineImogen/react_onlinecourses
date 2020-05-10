@@ -5,7 +5,7 @@ import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
 
 import AppbarMui from './components/AppbarMui'
 import HeaderMui from './components/HeaderMui'
-import Coursecard from './components/Coursecard'
+import CourseСard from './components/CourseСard';
 import Footer from './components/Footer'
 import theme from './theme.js'
 import {Link } from 'react-router-dom';
@@ -40,7 +40,7 @@ const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up("md"));
             <Grid container justify="flex-start" spacing={2} direction="row" alignItems="flex-start">
                 {data.map((card) => (
                     <Grid key={card.id} item xs={4}>
-                        <Coursecard
+                        <CourseСard
                             title={card.title}
                             image={card.image}
                             description={card.description}

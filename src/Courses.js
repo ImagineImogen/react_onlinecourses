@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Coursecard from './components/Coursecard';
+import CourseСard from './components/CourseСard';
 import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
 
 import AppbarMui from './components/AppbarMui'
@@ -28,7 +28,7 @@ class Courses extends Component {
             <Grid container justify="flex-start" spacing={2} direction="row" alignItems="flex-start">
                 {this.state.contacts.map((card) => (
                     <Grid key={card.id} item xs={4}>
-                        <Coursecard
+                        <CourseСard
                             title={card.title}
                             image={card.image}
                             description={card.description}
