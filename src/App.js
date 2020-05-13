@@ -9,6 +9,7 @@ import CourseСard from './components/CourseСard';
 import Footer from './components/Footer'
 import theme from './theme.js'
 import {Link } from 'react-router-dom';
+import { withCookies } from 'react-cookie'
 
 const url = process.env.PUBLIC_URL  + "/img/bg1.jpg";
 
@@ -18,10 +19,21 @@ const data = [
   {id: 3, title: "Magical Beasts - Introductory course", image: "./img/beasts.jpg", description: "Step into the marvellous world of powerful creatures and avoid being killed!"}
 ]
 
-function App(){
+class App extends Component{
 
-const greaterThanSm = useMediaQuery(theme => theme.breakpoints.up("sm"));
-const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up("md"));
+  state = {
+    token: this.props.cookies.get('apitoken')
+  }
+
+  componentDidMount() {
+    if(this.state.token){
+
+    } else{
+      window.location.href = '/login';
+    }
+  }
+    render (){
+
     return (
         <>
       <Hidden only="xs">
@@ -56,5 +68,6 @@ const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up("md"));
     </>
   );
 }
+}
 
-export default App;
+export default withCookies (App);

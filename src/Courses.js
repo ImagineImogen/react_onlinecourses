@@ -26,7 +26,7 @@ class Courses extends Component {
         <h2 style={{paddingTop: 20, paddingBottom: 20, marginLeft: 80}}> Most Popular Courses</h2>
         <Box p={(2, 4)}>
             <Grid container justify="flex-start" spacing={2} direction="row" alignItems="flex-start">
-                {this.state.contacts.map((card) => (
+                {this.state.coursesAPI.map((card) => (
                     <Grid key={card.id} item xs={4}>
                         <CourseСard
                             title={card.title}
@@ -46,16 +46,16 @@ class Courses extends Component {
     }
 
     state = {
-        contacts: []
+        coursesAPI: []
     };
 
     componentDidMount() {
-        fetch('http://lisa-492fcdeb.localhost.run/api/')
+        fetch('http://lisa-492fcdeb.localhost.run/api/') //,{method: 'GET', headers: {'Authorization' : 'Token 902a4b6d4a107f67b444425'}}
             .then(res => res.json())
             .then((data) => {
-                this.setState({ contacts: data })
+                this.setState({ coursesAPI: data })
             })
-            .catch(console.log)
+            .catch(error => console.log)
     }
 }
 
