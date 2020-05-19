@@ -17,6 +17,7 @@ const routing = (
 			<Route exact path="/" component={App}></Route>
 			<Route exact path="/courses" component={Courses}></Route>
 			<Route path="/teachers">Teachers</Route>
+			<Route exact path="/login" component={Login}></Route>
 			</MuiThemeProvider>
 		</CookiesProvider>
 	</BrowserRouter>

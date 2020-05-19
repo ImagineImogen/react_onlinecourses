@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CourseСard from './components/CourseСard';
 import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
+import { withRouter } from 'react-router-dom'
 
 import AppbarMui from './components/AppbarMui'
 import HeaderMui from './components/HeaderMui'
@@ -13,7 +14,7 @@ class Courses extends Component {
             return (
         <>
       <Hidden only="xs">
-        <AppbarMui />
+        <AppbarMui label={'Home'}/>
       </Hidden>
       <Grid container spacing={3} justify="center">
         <Grid
@@ -47,6 +48,7 @@ class Courses extends Component {
 
     state = {
         coursesAPI: []
+        
     };
 
     componentDidMount() {
@@ -56,7 +58,8 @@ class Courses extends Component {
                 this.setState({ coursesAPI: data })
             })
             .catch(error => console.log)
-    }
+
+}
 }
 
 export default Courses;

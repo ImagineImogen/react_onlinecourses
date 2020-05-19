@@ -33,10 +33,32 @@ tabRoot: {
 
 }));
 
-function AppbarMui() {
+function AppbarMui(props)  {
   const classes = useStyles();
 
+  changeTitle = () => {
+  switch(window.location.pathname){
+    case '/courses':
+      return 'Home';
+    default:
+      return 'Courses';
+  };
+
+  changeLinkTo = () => {
+  switch(window.location.pathname){
+    case '/courses':
+      return '/';
+    default:
+      return '/courses';
+  }
+
+
+}
+
   return (
+    let title = changeTitle();
+    let linkTo = changeLinkTo();
+
     <div className={classes.root}>
       <AppBar position="static" color="transparent" style={{ boxShadow: 'none'}}>
         <Toolbar>
@@ -44,10 +66,10 @@ function AppbarMui() {
             Welcome to Hogwarts Online
           </Typography>
           <Tabs>
-            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value={0} label="Courses" to='/courses' component={Link} />
+            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value={0} label={title} to={linkTo} component={Link} />
             <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value={0} label="Teachers" to='/teachers' component={Link} />
           </Tabs>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" to='/login' component={Link}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

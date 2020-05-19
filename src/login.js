@@ -7,7 +7,8 @@ class Login extends Component {
 		credentials: {
 			username: '',
 			password: ''
-		}
+		},
+		isLoginView: true
 	}
 	inputChanged = event => {
         let cred = this.state.credentials;
@@ -15,7 +16,8 @@ class Login extends Component {
         this.setState({credentials: cred});
 	}
     login = event => {
-    	fetch(`${process.env.REACT_APP_API_URL}/login/`, {
+    	if (this.state.isLoginView) {
+    		fetch(`${process.env.REACT_APP_API_URL}/login/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(this.state.credentials)
@@ -26,18 +28,41 @@ class Login extends Component {
                     window.location.href = "/";
                 })
                 .catch( error => console.log(error))
+    	}else {
+    		fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(this.state.credentials)
+                }).then( resp => resp.json())
+    			.then( res => {
+                    this.setState({isLoginView: true});
+                })
+                .catch( error => console.log(error))
+    	}
+
+    	
+    }
+
+    toggleView = () => {
+    	this.setState({isLoginView: !this.state.isLoginView});
     }
 	render() {
 		return <div className="login-container">
-		<h1>Login</h1>
+		<h1>
+			{this.state.isLoginView ? 'Login' : 'Register'}
+		</h1>
 			<span>Username</span><br/>
-			<input type="text" name="username" value={this.state.credentials.username} 
+			<input style={{marginTop: 5}} type="text" name="username" value={this.state.credentials.username} 
 			onChange={this.inputChanged}/><br/>
-			<span>Password</span><br/>
-			<input type="text" name="password" value={this.state.credentials.password} 
+			<span >Password</span><br/>
+			<input style={{marginTop: 5}} type="text" name="password" value={this.state.credentials.password} 
 			onChange={this.inputChanged}/><br/>
-			 <button onClick={this.login}>
+			 <button style={{marginTop: 10}}onClick={this.login}>
+			 {this.state.isLoginView ? 'Login' : 'Register'}
             </button>
+            <p style={{marginTop: 10}} onClick={this.toggleView}>
+            {this.state.isLoginView ? 'Create Account' : 'Back to login'}
+            </p>
 		</div>
 	}
 

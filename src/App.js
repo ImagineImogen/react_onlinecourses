@@ -27,6 +27,14 @@ class App extends Component{
 
   componentDidMount() {
     if(this.state.token){
+      fetch('http://127.0.0.1:8000/api/', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Token ${this.state.token}`
+        }
+      }).then( resp => resp.json())
+      .then( res => this.setState({movies: res}))
+      .catch( error => console.log(error))
 
     } else{
       window.location.href = '/login';
