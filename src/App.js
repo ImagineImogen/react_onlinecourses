@@ -21,25 +21,6 @@ const data = [
 
 class App extends Component{
 
-  state = {
-    token: this.props.cookies.get('apitoken')
-  }
-
-  componentDidMount() {
-    if(this.state.token){
-      fetch('http://127.0.0.1:8000/api/', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Token ${this.state.token}`
-        }
-      }).then( resp => resp.json())
-      .then( res => this.setState({movies: res}))
-      .catch( error => console.log(error))
-
-    } else{
-      window.location.href = '/login';
-    }
-  }
     render (){
 
     return (
@@ -78,4 +59,4 @@ class App extends Component{
 }
 }
 
-export default withCookies (App);
+export default App;

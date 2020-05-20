@@ -33,31 +33,32 @@ tabRoot: {
 
 }));
 
-function AppbarMui(props)  {
-  const classes = useStyles();
-
-  changeTitle = () => {
+  const changeTitle = () => {
   switch(window.location.pathname){
     case '/courses':
       return 'Home';
     default:
       return 'Courses';
-  };
+  }
+};
 
-  changeLinkTo = () => {
+  const changeLinkTo = () => {
   switch(window.location.pathname){
     case '/courses':
       return '/';
     default:
       return '/courses';
   }
+};
 
+function AppbarMui()  {
+  const classes = useStyles();
 
-}
+    const title = changeTitle();
+    const linkTo = changeLinkTo();
 
   return (
-    let title = changeTitle();
-    let linkTo = changeLinkTo();
+
 
     <div className={classes.root}>
       <AppBar position="static" color="transparent" style={{ boxShadow: 'none'}}>
@@ -75,4 +76,5 @@ function AppbarMui(props)  {
     </div>
   );
 }
+
 export default AppbarMui;
