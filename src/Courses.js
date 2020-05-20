@@ -52,7 +52,7 @@ class Courses extends Component {
     };
 
     componentDidMount() {
-        fetch('http://lisa-492fcdeb.localhost.run/api/') //,{method: 'GET', headers: {'Authorization' : 'Token 902a4b6d4a107f67b444425'}}
+        fetch(`${process.env.REACT_APP_API_URL}/api/`)
             .then(res => res.json())
             .then((data) => {
                 this.setState({ coursesAPI: data })
