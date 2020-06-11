@@ -33,6 +33,7 @@ class Courses extends Component {
                             title={card.title}
                             image={card.image}
                             description={card.description}
+                            id={card.id}
                         />
                     </Grid>
                 ))}

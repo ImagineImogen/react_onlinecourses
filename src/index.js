@@ -6,18 +6,23 @@ import Courses from './Courses';
 import Login from './login'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theme from "./theme";
-import { BrowserRouter, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie'
+//import Login_hooks from "./Login_hooks"
+import CourseView from './CourseView';
 
 const routing = (
 	<BrowserRouter>
 		<CookiesProvider>
 		<MuiThemeProvider theme={theme}>
 		<CssBaseline />
+		<Switch>
 			<Route exact path="/" component={App}></Route>
 			<Route exact path="/courses" component={Courses}></Route>
 			<Route path="/teachers">Teachers</Route>
 			<Route exact path="/login" component={Login}></Route>
+			<Route exact path="/api/:id" component={CourseView}></Route>
+			</Switch>
 			</MuiThemeProvider>
 		</CookiesProvider>
 	</BrowserRouter>

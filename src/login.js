@@ -17,7 +17,7 @@ class Login extends Component {
 	}
     login = event => {
     	if (this.state.isLoginView) {
-    		fetch(`${process.env.REACT_APP_API_URL}/login/`, {
+    		fetch(`${process.env.REACT_APP_API_URL}/users/login/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(this.state.credentials)

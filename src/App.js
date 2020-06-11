@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
@@ -11,7 +11,6 @@ import theme from './theme.js'
 import {Link } from 'react-router-dom';
 import { withCookies } from 'react-cookie'
 
-const url = process.env.PUBLIC_URL  + "/img/bg1.jpg";
 
 const data = [
   {id: 1, title: "Potion-Making - Beginner's course", image: "./img/potions.jpg", description: "This highly-rated online course will guide you step-by-step through the composition of your first potion and other related aspects of potion-making"},

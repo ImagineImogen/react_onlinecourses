@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import theme from '../theme.js'
+import {Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CourseСard({title, image, description}) {
+export default function CourseСard({title, image, description, id}) {
   const classes = useStyles();
 
   return (
@@ -48,7 +49,7 @@ export default function CourseСard({title, image, description}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="outlined" size="small" color="primary">
+        <Button variant="outlined" size="small" color="primary" to={`/api/${id}`} component={Link}>
           Click here to find out more
         </Button>
       </CardActions>
