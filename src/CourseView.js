@@ -9,35 +9,14 @@ import AppbarMui from './components/AppbarMui'
 import {Link } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie'
 
-const data = 
-  {
-    "id": 1,
-    "title": "Potion-Making - Beginner's course",
-    "description": "This highly-rated online course will guide you step-by-step through the composition of your first potion and other related aspects of potion-making",
-    "lessons": [
-        {
-            "id": 1,
-            "title": "Induction - What is a potion making?",
-            "description": "What is a potion making and what will you need during our course?",
-            "course": "Potion-Making - Beginner's course"
-        }
-    ],
-    "teacher": [
-        {
-            "teacher_name": "alin"
-        }
-    ]
-}
 
-const teacherMapped = data.teacher.map(tea => (tea.teacher_name))
-
-//const lessonsMapped = data.lessons.map(less => (less.description))
 
 class CourseView extends Component { 
 
     state = {
         oneCourse: [],
-        teacher: []
+        teacher: [], 
+        lessons: []
         
     };
 
@@ -45,12 +24,9 @@ class CourseView extends Component {
     fetch(`${process.env.REACT_APP_API_URL}${window.location.pathname}`)
         .then(res => res.json())
         .then((data) => {
-            this.setState({ oneCourse: data, teacher: data.teacher })
-        console.log(data, data.teacher.map(tea => (tea.teacher_name))[0])
+            this.setState({ oneCourse: data, teacher: data.teacher.map(tea => (tea.teacher_name))[0], lessons: data.lessons.map(less => (less.description))[0]})
         })
         .catch(error => console.log)
-
-const teacherss = this.state.teacher.map(tea => (tea.teacher_name))[0]
 
 }
 
@@ -73,10 +49,8 @@ enroll = event => {
         alert ('An Error occurred!')
     }}
 
-  teachersMapped =()=> {if (this.state.oneCourse.teacher){ this.state.oneCourse.teacher.map(tea => (tea.teacher_name))}};
 
-  lessonMapped = () => {if (this.state.oneCourse.lessons){ this.state.oneCourse.lessons.map(less => (less.description))}};
-  //teachersMapped =()=> { this.state.teacher && this.state.teacher.map(tea => (tea.teacher_name))};
+
 
   render () {
     return(
@@ -98,11 +72,11 @@ enroll = event => {
                         </Typography>
                         <h4>Teacher</h4>
                         <Typography>
-                        Teacher is {this.teacherss || "To be determined"}
+                        Teacher is {this.state.teacher || "To be determined"}
                         </Typography>
                         <h4>Lessons</h4>
                          <Typography>
-                        {this.lessonMapped || "To be continued"}
+                        {this.state.lessons || "To be continued"}
                         </Typography>
                     </CardContent>
                     <CardActions>
