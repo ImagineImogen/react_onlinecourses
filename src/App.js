@@ -3,9 +3,9 @@ import './App.css';
 import styled from 'styled-components';
 import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
 
-import AppbarMui from './components/AppbarMui'
-import HeaderMui from './components/HeaderMui'
-import CourseСard from './components/CourseСard';
+import AppbarMui from './components/AppbarMui';
+import HeaderMui from './components/HeaderMui';
+import CourseCard from './components/CourseCard';
 import Footer from './components/Footer'
 import theme from './theme.js'
 import {Link } from 'react-router-dom';
@@ -40,11 +40,11 @@ class App extends Component{
             <Grid container justify="flex-start" spacing={2} direction="row" alignItems="flex-start">
                 {data.map((card) => (
                     <Grid key={card.id} item xs={4}>
-                        <CourseСard
+                         <CourseCard
                             title={card.title}
                             image={card.image}
                             description={card.description}
-                        />
+                        /> 
                     </Grid>
                 ))}
             </Grid>

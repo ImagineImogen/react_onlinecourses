@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import CourseСard from './components/CourseСard';
 import { Grid, useMediaQuery, Hidden, Box, Button } from "@material-ui/core";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
-import AppbarMui from './components/AppbarMui'
-import HeaderMui from './components/HeaderMui'
-import Footer from './components/Footer'
-import theme from './theme.js'
+import AppbarMui from './components/AppbarMui';
+import HeaderMui from './components/HeaderMui';
+import Footer from './components/Footer';
+import theme from './theme.js';
 import {Link } from 'react-router-dom';
+import CourseCard from './components/CourseCard';
 
 class Courses extends Component {
     render() {
@@ -29,7 +29,7 @@ class Courses extends Component {
             <Grid container justify="flex-start" spacing={2} direction="row" alignItems="flex-start">
                 {this.state.coursesAPI.map((card) => (
                     <Grid key={card.id} item xs={4}>
-                        <CourseСard
+                        <CourseCard
                             title={card.title}
                             image={card.image}
                             description={card.description}

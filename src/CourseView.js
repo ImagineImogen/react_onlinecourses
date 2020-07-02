@@ -31,11 +31,10 @@ class CourseView extends Component {
 }
 
 
-
 enroll = event => {
     let cookieValue = (document.cookie.match(/^(?:.*;)?\s*apitoken\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1]
     if (cookieValue.length > 0) {
-            fetch(`${process.env.REACT_APP_API_URL}${window.location.pathname}`, {
+        	fetch(`${process.env.REACT_APP_API_URL}${window.location.pathname}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 
                             'Authorization': `Token ${cookieValue}`},
@@ -50,20 +49,16 @@ enroll = event => {
     }}
 
 
-
-
   render () {
     return(
         <div>
           <AppbarMui />
                 <Card>
-                
                     <CardMedia style={{height: 300}}
                     component="img"
                         image="../img/room.jpg"
                         />
                     <CardContent>
-                    
                         <Typography gutterBottom variant="headline" component="h2" color="secondary">
                             {this.state.oneCourse.title}
                         </Typography>
@@ -90,7 +85,6 @@ enroll = event => {
         </div>
    ) 
 }
-
 
 }
 export default withCookies (CourseView)

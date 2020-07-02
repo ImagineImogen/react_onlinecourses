@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Courses from './Courses';
 import Login from './login'
+import AboutUs from './AboutUs'
 import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theme from "./theme";
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -22,6 +23,7 @@ const routing = (
 			<Route path="/teachers">Teachers</Route>
 			<Route exact path="/login" component={Login}></Route>
 			<Route exact path="/api/:id" component={CourseView}></Route>
+			<Route exact path="/aboutus" component={AboutUs}></Route>
 			</Switch>
 			</MuiThemeProvider>
 		</CookiesProvider>

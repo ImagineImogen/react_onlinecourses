@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CourseСard({title, image, description, id}) {
+function CourseCard({title, image, description, id}) {
   const classes = useStyles();
 
   return (
@@ -56,3 +56,4 @@ export default function CourseСard({title, image, description, id}) {
     </Card>
   );
 }
+export default CourseCard;
