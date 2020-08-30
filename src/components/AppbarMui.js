@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,32 +34,12 @@ tabRoot: {
 
 }));
 
-  const changeTitle = () => {
-  switch(window.location.pathname){
-    case '/courses':
-      return 'Home';
-    default:
-      return 'Courses';
-  }
-};
 
-  const changeLinkTo = () => {
-  switch(window.location.pathname){
-    case '/courses':
-      return '/';
-    default:
-      return '/courses';
-  }
-};
 
-function AppbarMui()  {
+function AppbarMui(props)  {
   const classes = useStyles();
 
-    const title = changeTitle();
-    const linkTo = changeLinkTo();
-
   return (
-
 
     <div className={classes.root}>
       <AppBar position="static" color="transparent" style={{ boxShadow: 'none'}}>
@@ -65,9 +47,10 @@ function AppbarMui()  {
           <Typography variant="h6" className={classes.title}>
             Welcome to Hogwarts Online
           </Typography>
-          <Tabs>
-            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value={0} label={title} to={linkTo} component={Link} />
-            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value={0} label="Teachers" to='/teachers' component={Link} />
+          <Tabs value={props.location.pathname}>
+            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value='/' label='Home' to='/' component={Link} />
+            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value='/courses' label='Courses' to='/courses' component={Link} />
+            <Tab classes={{ root: classes.tabRoot, selected: classes.tabSelected }} value='/aboutus' label="About Us" to='/aboutus' component={Link} />
           </Tabs>
           <Button color="inherit" to='/login' component={Link}>Login</Button>
         </Toolbar>
@@ -76,4 +59,4 @@ function AppbarMui()  {
   );
 }
 
-export default AppbarMui;
+export default withRouter(AppbarMui);

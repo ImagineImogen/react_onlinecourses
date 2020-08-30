@@ -1,16 +1,40 @@
 import React, { Component, Fragment	} from 'react';
 import AppbarMui from './components/AppbarMui';
-import { makeStyles } from '@material-ui/core/styles';
+import HeaderMui from './components/HeaderMui';
+import Footer from './components/Footer'
+import { withStyles } from '@material-ui/core/styles'
 import theme from './theme.js'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-//do I need to import {withCookie} here, do we need it here?
+import FormLabel from '@material-ui/core/FormLabel';
+import { TextField } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = theme => ({
   margin: {
     margin: theme.spacing(1),
   },
-}));
+
+  FrmLabel: {
+    color:"red",
+    display: "block",
+    alignItems: "center",
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(2),
+    marginLeft: theme.spacing(1),
+
+    
+  },
+  inputField: {
+    paddingBottom: theme.spacing(1),
+    alignSelf: 'center',
+  },
+
+  Btn: {
+    margin: theme.spacing(1),
+  }
+
+});
+
 
 class AboutUs extends Component {
  	constructor(props) {
@@ -22,7 +46,7 @@ class AboutUs extends Component {
 			}	
 		};
 		this.handleChange = this.handleChange.bind(this);
-		//this.handleSubmit
+		this.handleSubmit = this.handleSubmit.bind(this);
     }	
 
     handleChange(event) {
@@ -47,30 +71,43 @@ class AboutUs extends Component {
 		.catch( error => console.log(error));
     }
 
+  
+
   render() {
+    const { classes } = this.props;
     return (
     	<Fragment >
     	<AppbarMui />
+      <HeaderMui />
       <form>
-        <label>
-          Email:
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-        </label>
-        <label>
-        Your question
-        <textarea value={this.state.value} name="question" onChange={this.handleChange} />
-        </label>
-
-        <Button type="submit"
-        		variant="contained"
-		        color="inherit"
-		        onSubmit = {this.handleSubmit}
+      <div style={{ display: 'inline-flex' }}>
+        <div>
+        <FormLabel className={classes.FrmLabel}>
+          Email Adress:
+          </FormLabel>
+          </div>
+          <div style={{ alignSelf: 'center' }}> 
+          <TextField id="outlined-basic" label="Provide an email" variant="outlined" size="small" className={classes.inputField} type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+        </div>
+        </div>
+        
+        <FormLabel className={classes.FrmLabel}>
+        Your Question:
+        <TextField  label="Type in your question" variant="outlined" size="small" className={classes.inputField} value={this.state.value} name="question" onChange={this.handleChange}
+          id="outlined-basic"
+           />
+        </FormLabel>
+        
+        <Button className={classes.Btn} variant="contained" color="primary" 
+		        onClick = {this.handleSubmit}
 		        >
          	Submit Your Question
         </Button>
+    
       </form>
+      <Footer />
       </Fragment>
     );
   }
 }
-export default AboutUs;
+export default withStyles(useStyles) (AboutUs);
