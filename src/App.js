@@ -49,7 +49,7 @@ class App extends Component{
                 ))}
             </Grid>
         </Box>
-        <Button  variant="contained" color="primary" to='/courses' component={Link} style={{ marginTop: "auto",  marginBottom: "auto", marginLeft: theme.spacing(9)}}> All Courses >></Button>
+        <Button  data-testid = "btnCourses" variant="contained" color="primary" to='/courses' component={Link} style={{ marginTop: "auto",  marginBottom: "auto", marginLeft: theme.spacing(9)}}> All Courses >></Button>
         <Footer />
         </Grid>
       </Grid>
