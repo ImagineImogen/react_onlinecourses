@@ -40,7 +40,7 @@ function CourseCard({title, image, description, id}) {
           
         />
         <CardContent>
-          <Typography className={classes.title}  gutterBottom variant="h5" component="h2">
+          <Typography data-testid = "title" className={classes.title}  gutterBottom variant="h5" component="h2">
             {title || "Unknown"}
             </Typography>
           <Typography className={classes.description} variant="body2" color="textSecondary" component="p">
