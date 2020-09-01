@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import  CourseCard  from '../components/CourseCard.js';
+import { create } from "react-test-renderer"
 //import { render } from '@testing-library/react'
 import ShallowRenderer from 'react-test-renderer/shallow';
-import  Footer  from '../components/Footer.js';
+import { BrowserRouter} from 'react-router-dom';
 
 
-// it("renders CourseCard correctly", () => {
-//     const renderer = new ShallowRenderer();
-//     //const getByTestId  = renderer.render(<CourseCard title='Test Course' />)
-//     const getByTestId  = renderer.render(<AppbarMui />)
-//     const result = renderer.getRenderOutput();
+describe("CourseCard component", () => {
+    let title = "Test title"
+    let description = "Test description"
+    let image = "link/to/image.jpg"
+    let id = 1
 
-//     expect(result.type).toBe('div');
-//     //expect(getByTestId).textContent.toBe('Test Course')
-// })
-
-
+    test("first test", () => {
+        const component = create(<BrowserRouter><CourseCard  title = {title}/></BrowserRouter>)
+    })
+})

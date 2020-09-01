@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import  App  from '../App.js';
 import renderer from 'react-test-renderer'
 import { BrowserRouter} from 'react-router-dom';
-import { render, fireEvent, getByText, getByLabelText, getByTestId } from '@testing-library/react'
+import { render, fireEvent, getByTestId } from '@testing-library/react'
 
 
 test("App rendering", ()=> {
@@ -14,9 +14,9 @@ test("App rendering", ()=> {
 })
 
 test("user goes to Courses page", () => {
-    const {getByText, getByLabelText, getByTestId} = render(<BrowserRouter><App/ ></BrowserRouter>);
+    const { getByTestId} = render(<BrowserRouter><App/ ></BrowserRouter>);
 
     fireEvent.click(getByTestId("btnCourses"))
-    getByText("Home")
+    
 
 })
